@@ -1,6 +1,6 @@
 ---
 - name: Install and run Nginx
-  hosts: webservers
+  hosts: all
   become: yes
   tasks:
     - name: Update package cache (for Debian-based systems)
