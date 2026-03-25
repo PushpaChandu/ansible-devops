@@ -1,0 +1,22 @@
+---
+- name: Create directory backup using shell module
+  hosts: all
+  become: true
+  tasks:
+    - name: Create backup directory
+      ansible.builtin.shell: |
+      mkdir -p /var/backups/myapp
+      
+    - name: Copy files to backup directory
+      ansible.builtin.shell: |
+        cp -r /opt/myapp /var/backups/myapp
+
+    - name: Verify backup completion
+      ansible.builtin.shell: |
+        ls /var/backups/myapp
+      register: backup_result
+
+    - name: Display backup status
+      debug:
+        msg: "Backup completed successfully: {{ backup_result.stdout_lines }}"
+      when: backup_result.rc == 0

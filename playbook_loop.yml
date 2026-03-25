@@ -1,0 +1,20 @@
+---
+- hosts: localhost
+  vars:
+    list_of_services:
+      - nginx
+      - redis
+      - postfix
+    allowed_services:
+      - nginx
+      - redis
+
+  tasks:
+    - name: Start only allowed services
+      systemd:
+        name: "{{ item }}"
+        state: started
+      loop: "{{ list_of_services }}"
+      when: item in allowed_services
+
+      

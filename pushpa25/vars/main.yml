@@ -1,0 +1,4 @@
+#SPDX-License-Identifier: MIT-0
+---
+- src: devops-haroon.ansible_role_staticweb
+# vars file for pushpa25

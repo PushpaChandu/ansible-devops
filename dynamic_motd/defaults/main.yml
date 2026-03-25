@@ -1,0 +1,4 @@
+#SPDX-License-Identifier: MIT-0
+---
+var1: "Lets Learn Ansible in module3 for JAIN MCA"
+# defaults file for dynamic_motd

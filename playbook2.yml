@@ -1,0 +1,6 @@
+---
+- hosts: all
+  become: true
+  roles:
+    - devops-haroon.ansible_role_staticweb
+ 

@@ -1,0 +1,8 @@
+- name: Install Git on Amazon Linux
+  hosts: all
+  become: true
+  tasks:
+    - name: Install Git
+      yum:
+        name: git
+        state: present

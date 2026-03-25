@@ -1,0 +1,11 @@
+---
+- name: Run multiple commands
+  hosts: all
+  become: true
+  tasks:
+    - name: Execute multiple commands using shell module
+      ansible.builtin.shell: |
+        echo "Starting setup..."
+        mkdir -p /opt/myapp
+        touch /opt/myapp/config.yaml
+        echo "Setup complete."

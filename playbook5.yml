@@ -1,0 +1,21 @@
+---
+- name: Install iperf3 on all servers
+  hosts: host1
+  become: true  # Required for package installation
+
+  tasks:
+    - name: Ensure iperf3 is installed
+      ansible.builtin.package:
+        name: iperf3
+        state: present
+      # Optional: Update cache before installing (useful for Ubuntu/Debian)
+      register: iperf_install
+      
+    - name: Verify iperf3 version
+      ansible.builtin.command: iperf3 -v
+      register: iperf_version
+      changed_when: false
+
+    - name: Print iperf3 version info
+      ansible.builtin.debug:
+        msg: "{{ iperf_version.stdout_lines[0] }}"

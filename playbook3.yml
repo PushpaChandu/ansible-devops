@@ -1,0 +1,21 @@
+---
+- name: Install and configure Wireshark
+  hosts: host1
+  become: yes
+  tasks:
+    - name: Install Wireshark (Debian/Ubuntu)
+      apt:
+        name: wireshark
+        state: present
+        update_cache: yes
+      when: ansible_os_family == "Debian"
+
+    - name: Configure Wireshark to allow non-root users
+      debconf:
+        name: wireshark-common
+        question: "wireshark-common/install-setuid"
+        value: "true"
+        vtype: "boolean"
+      when: ansible_os_family == "Unix"
+
+   

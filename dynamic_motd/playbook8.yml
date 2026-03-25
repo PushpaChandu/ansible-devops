@@ -1,0 +1,9 @@
+---
+- name: Clone a public Git repository
+  hosts: all
+  tasks:
+    - name: Clone the repository
+      ansible.builtin.git:
+        repo: "https://github.com/ansible/ansible-examples.git"
+        dest: "/opt"
+        version: "main"
